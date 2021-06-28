@@ -3,6 +3,7 @@ import { trimEnd } from 'lodash';
 import { ProductSelectorError } from '../ProductSelectorError';
 export class SFCC {
   constructor(settings) {
+    console.log(`new SFCC`)
     this.settings = settings;
   }
 

@@ -83,7 +83,7 @@ export const getSelectedItems = () => async (dispatch, getState) => {
     dispatch(setFetching(false));
     dispatch(setInitialised(true));
   } catch (e) {
-    console.error('could not load', e);
+    console.error('could not load blue blee', e);
     dispatch(setFetching(false));
     dispatch(setInitialised(true));
     dispatch(setGlobalError('Could not get selected items'));

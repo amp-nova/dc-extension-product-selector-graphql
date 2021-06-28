@@ -9,10 +9,10 @@ let mapProduct = prod => ({
   image: _.get(_.first(prod.variants), 'defaultImage.url')
 })
 
-export class BigCommerce {
+export class GraphQLBackend {
   client;
   constructor({ backendId, graphqlUrl }) {
-    console.log(`BigCommerce init ${backendId}`)
+    console.log(`GraphQL init ${backendId}`)
     const httpLink = createHttpLink({
       uri: graphqlUrl
     })
@@ -76,7 +76,9 @@ export class BigCommerce {
       query: gql`
         query products {
           products(keyword:"${searchText}",limit:${PAGE_SIZE},offset:${page.curPage * PAGE_SIZE}) {
-            total
+            meta {
+              total
+            }
             results {
               id
               name
@@ -95,9 +97,9 @@ export class BigCommerce {
     return {
       items,
       page: {
-        numPages: Math.ceil(results.data.products.total / PAGE_SIZE),
+        numPages: Math.ceil(results.data.products.meta.total / PAGE_SIZE),
         curPage: page.curPage,
-        total: results.data.products.total
+        total: results.data.products.meta.total
       }
     };
   }
