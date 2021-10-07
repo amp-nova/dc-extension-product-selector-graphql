@@ -21,7 +21,7 @@ export class GraphQLBackend {
       return {
         headers: {
           ...headers,
-          'X-Commerce-Backend-Key': backendId,
+          'x-pbx-backend-key': backendId,
         }
       }
     });
