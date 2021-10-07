@@ -11,8 +11,8 @@ let mapProduct = prod => ({
 
 export class GraphQLBackend {
   client;
-  constructor({ backendId, graphqlUrl }) {
-    console.log(`GraphQL init ${backendId}`)
+  constructor({ backendKey, graphqlUrl }) {
+    console.log(`GraphQL init ${backendKey}`)
     const httpLink = createHttpLink({
       uri: graphqlUrl
     })
@@ -21,7 +21,7 @@ export class GraphQLBackend {
       return {
         headers: {
           ...headers,
-          'x-pbx-backend-key': backendId,
+          'x-pbx-backend-key': backendKey,
         }
       }
     });
